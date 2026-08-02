@@ -5,3 +5,6 @@ variable "c-data-subnet" {
     type = map(any)
   
 }
+variable "c-nsg" {
+  type = map(any)
+}

@@ -9,6 +9,7 @@ resource "azurerm_network_interface" "apex-vm-nic" {
   name = each.key
   location = each.value.location
   resource_group_name = each.value.rgname
+  
   ip_configuration {
     name = each.value.ipconfigname
     subnet_id = data.azurerm_subnet.data-subnet[each.value.subnet_id].id
@@ -37,4 +38,18 @@ resource "azurerm_linux_virtual_machine" "fronted-vm-apex" {
     sku       = each.value.sku
     version   = each.value.version
   }
+}
+
+data "azurerm_network_security_group" "nsg-apex" {
+    for_each = var.c-nsg
+    name = each.key
+    resource_group_name = each.value.rgname
+    
+}
+
+resource "azurerm_network_interface_security_group_association" "name" {
+ for_each = var.c-vms
+ network_interface_id = azurerm_network_interface.apex-vm-nic[each.key].id
+ network_security_group_id = data.azurerm_network_security_group.nsg-apex[each.value.nsg-forntend].id
+
 }
