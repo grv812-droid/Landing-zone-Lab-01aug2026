@@ -71,8 +71,8 @@ p-vms = {
 
     vmname="vm-frontend"
     size="Standard_L2aos_v4"
-    username="grv812"
-    pass="Amaira310790"
+    usrname="grv812"
+    pswd="Amaira310790"
     auth="false"
     stg_type="Standard_LRS"
     cache="ReadWrite"
@@ -91,8 +91,8 @@ p-vms = {
 
     vmname="vm-backend"
     size="Standard_L2aos_v4"
-    username="grv812"
-    pass="Amaira310790"
+    usrname="grv812"
+    pswd="Amaira310790"
     auth="false"
     stg_type="Standard_LRS"
     cache="ReadWrite"
