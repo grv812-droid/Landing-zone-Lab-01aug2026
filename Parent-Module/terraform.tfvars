@@ -62,45 +62,81 @@ p-bastion = {
 }
 
 p-vms = {
-  vm-nic-frontend={
-    location="japan east"
-    rgname="rg-dev"
-    ipconfigname="frontend"
-    subnet_id="subnet1-apex"
-    add_allo="Dynamic"
+  vm-nic-frontend = {
+    location     = "japan east"
+    rgname       = "rg-dev"
+    ipconfigname = "frontend"
+    subnet_id    = "subnet1-apex"
+    add_allo     = "Dynamic"
 
-    vmname="vm-frontend"
-    size="Standard_L2aos_v4"
-    usrname="grv812"
-    pswd="Amaira310790"
-    auth="false"
-    stg_type="Standard_LRS"
-    cache="ReadWrite"
-    publisher="Canonical"
-    offer ="ubuntu-24_04-lts"
-    sku="server"
-    version="latest"
+    vmname    = "vm-frontend"
+    size      = "Standard_L2aos_v4"
+    usrname   = "grv812"
+    pswd      = "Amaira310790"
+    auth      = "false"
+    stg_type  = "Standard_LRS"
+    cache     = "ReadWrite"
+    publisher = "Canonical"
+    offer     = "ubuntu-24_04-lts"
+    sku       = "server"
+    version   = "latest"
+
+    nsg = "nsg-frontend"
   }
 
-  vm-nic-backend={
-    location="japan east"
-    rgname="rg-dev"
-    ipconfigname="backend"
-    subnet_id="subnet2-apex"
-    add_allo="Dynamic"
+  vm-nic-backend = {
+    location     = "japan east"
+    rgname       = "rg-dev"
+    ipconfigname = "backend"
+    subnet_id    = "subnet2-apex"
+    add_allo     = "Dynamic"
 
-    vmname="vm-backend"
-    size="Standard_L2aos_v4"
-    usrname="grv812"
-    pswd="Amaira310790"
-    auth="false"
-    stg_type="Standard_LRS"
-    cache="ReadWrite"
-    publisher="Canonical"
-    offer ="ubuntu-24_04-lts"
-    sku="server"
-    version="latest"
-    
+    vmname    = "vm-backend"
+    size      = "Standard_L2aos_v4"
+    usrname   = "grv812"
+    pswd      = "Amaira310790"
+    auth      = "false"
+    stg_type  = "Standard_LRS"
+    cache     = "ReadWrite"
+    publisher = "Canonical"
+    offer     = "ubuntu-24_04-lts"
+    sku       = "server"
+    version   = "latest"
+
+    nsg = "nsg-backend"
+  }
+}
+
+p-nsg = {
+  nsg-frontend = {
+    location = "japan east"
+    rgname   = "rg-dev"
+    ssh = {
+      name                       = "SSH"
+      priority                   = 100
+      direction                  = "Inbound"
+      access                     = "Allow"
+      protocol                   = "Tcp"
+      source_port_range          = "*"
+      destination_port_range     = "22"
+      source_address_prefix      = "*"
+      destination_address_prefix = "*"
+    }
   }
 
+  nsg-backend = {
+    location = "japan east"
+    rgname   = "rg-dev"
+    ssh = {
+      name                       = "SSH"
+      priority                   = 100
+      direction                  = "Inbound"
+      access                     = "Allow"
+      protocol                   = "Tcp"
+      source_port_range          = "*"
+      destination_port_range     = "22"
+      source_address_prefix      = "*"
+      destination_address_prefix = "*"
+    }
+  }
 }

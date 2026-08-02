@@ -30,3 +30,17 @@ module "bastion-creation" {
   c-bastion     = var.p-bastion
 
 }
+module "nsg-creation" {
+  depends_on = [module.rg-cretion]
+  source     = "../Child-Module/7azurerm_nsg"
+  c-nsg      = var.p-nsg
+}
+
+module "vm-creation" {
+  depends_on    = [module.subnet-creation]
+  source        = "../Child-Module/6azurerm_virtual_machine"
+  c-data-subnet = var.p-subnet
+  c-vms         = var.p-vms
+  c-nsg         = var.p-nsg
+
+}
