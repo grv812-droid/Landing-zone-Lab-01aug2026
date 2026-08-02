@@ -50,6 +50,6 @@ data "azurerm_network_security_group" "nsg-apex" {
 resource "azurerm_network_interface_security_group_association" "name" {
  for_each = var.c-vms
  network_interface_id = azurerm_network_interface.apex-vm-nic[each.key].id
- network_security_group_id = data.azurerm_network_security_group.nsg-apex[each.value.nsg-forntend].id
+ network_security_group_id = data.azurerm_network_security_group.nsg-apex[each.value.nsg].id
 
 }
