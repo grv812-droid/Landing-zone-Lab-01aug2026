@@ -60,3 +60,47 @@ p-bastion = {
     pubip       = "bastion_ip"
   }
 }
+
+p-vms = {
+  vm-nic-frontend={
+    location="japan east"
+    rgname="rg-dev"
+    ipconfigname="frontend"
+    subnet_id="subnet1-apex"
+    add_allo="Dynamic"
+
+    vmname="vm-frontend"
+    size="Standard_L2aos_v4"
+    username="grv812"
+    pass="Amaira310790"
+    auth="false"
+    stg_type="Standard_LRS"
+    cache="ReadWrite"
+    publisher="Canonical"
+    offer ="ubuntu-24_04-lts"
+    sku="server"
+    version="latest"
+  }
+
+  vm-nic-backend={
+    location="japan east"
+    rgname="rg-dev"
+    ipconfigname="backend"
+    subnet_id="subnet2-apex"
+    add_allo="Dynamic"
+
+    vmname="vm-backend"
+    size="Standard_L2aos_v4"
+    username="grv812"
+    pass="Amaira310790"
+    auth="false"
+    stg_type="Standard_LRS"
+    cache="ReadWrite"
+    publisher="Canonical"
+    offer ="ubuntu-24_04-lts"
+    sku="server"
+    version="latest"
+    
+  }
+
+}

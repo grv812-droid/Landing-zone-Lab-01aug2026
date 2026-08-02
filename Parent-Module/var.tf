@@ -17,3 +17,7 @@ variable "p-pubips" {
 variable "p-bastion" {
 
 }
+
+variable "p-vms" {
+  type = map(any)
+}
