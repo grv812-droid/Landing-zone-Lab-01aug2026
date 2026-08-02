@@ -37,7 +37,7 @@ module "nsg-creation" {
 }
 
 module "vm-creation" {
-  depends_on    = [module.subnet-creation,module.nsg-creation]
+  depends_on    = [module.subnet-creation, module.nsg-creation]
   source        = "../Child-Module/6azurerm_virtual_machine"
   c-data-subnet = var.p-subnet
   c-vms         = var.p-vms
