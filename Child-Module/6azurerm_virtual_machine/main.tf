@@ -23,8 +23,8 @@ resource "azurerm_linux_virtual_machine" "fronted-vm-apex" {
     resource_group_name = each.value.rgname
     network_interface_ids = [azurerm_network_interface.apex-vm-nic[each.key].id]
     size = each.value.size
-    admin_username = each.value.username
-    admin_password = each.value.pass
+    admin_username = each.value.usrname
+    admin_password = each.value.pswd
     disable_password_authentication = each.value.auth
     
     os_disk {
